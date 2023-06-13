@@ -13,5 +13,10 @@ namespace Project1.View.Guest
         {
             
         }
+
+        protected void loginBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
