@@ -1,0 +1,33 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GuestRegister.aspx.cs" Inherits="Project1.View.Guest.GuestRegister" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="lblName" runat="server" Text="Name:"></asp:Label>
+            <asp:TextBox ID="txtName" runat="server" TextMode="SingleLine"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblEmail" runat="server" Text="Email:"></asp:Label>
+            <asp:TextBox ID="txtEmail" runat="server" TextMode="Email"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblGender" runat="server" Text="Gender:"></asp:Label>
+            <asp:RadioButtonList ID="genderRadio" runat="server"></asp:RadioButtonList>
+                <asp:RadioButton ID="maleRadio" GroupName="gender" runat="server" Text="Male"/>
+                <asp:RadioButton ID="femaleRadio" GroupName="gender" runat="server" Text="Female"/>
+            <br />
+            <asp:Label ID="lblAddress" runat="server" Text="Address:"></asp:Label>
+            <asp:TextBox ID="txtAddress" runat="server" TextMode="MultiLine"></asp:TextBox>
+            <br />
+            <asp:Label ID="lblPassword" runat="server" Text="Password:"></asp:Label>
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+            <br />
+            <asp:Button ID="registerBtn" runat="server" Text="Register" OnClick="registerBtn_Click" 
+        </div>
+    </form>
+</body>
+</html>
