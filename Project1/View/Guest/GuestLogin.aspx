@@ -9,7 +9,23 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            test
+            <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label>
+            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+
+            <br />
+
+            <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
+            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+
+            <br />
+
+            <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+
+            <br />
+
+            <asp:CheckBox ID="cbRemember" runat="server" Text="Remember Me" />
+            <br />
+            <asp:Button ID="loginBtn" runat="server" Text="Login" OnClick="loginBtn_Click" />
         </div>
     </form>
 </body>
