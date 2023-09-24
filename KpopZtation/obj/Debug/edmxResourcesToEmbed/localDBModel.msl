@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="localDBModelStoreContainer" CdmEntityContainer="localDBEntities1">
+    <EntitySetMapping Name="msAlbums">
+      <EntityTypeMapping TypeName="localDBModel.msAlbum">
+        <MappingFragment StoreEntitySet="msAlbum">
+          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+          <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+          <ScalarProperty Name="AlbumName" ColumnName="AlbumName" />
+          <ScalarProperty Name="AlbumImage" ColumnName="AlbumImage" />
+          <ScalarProperty Name="AlbumPrice" ColumnName="AlbumPrice" />
+          <ScalarProperty Name="AlbumStock" ColumnName="AlbumStock" />
+          <ScalarProperty Name="AlbumDescription" ColumnName="AlbumDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="msArtists">
+      <EntityTypeMapping TypeName="localDBModel.msArtist">
+        <MappingFragment StoreEntitySet="msArtist">
+          <ScalarProperty Name="ArtistID" ColumnName="ArtistID" />
+          <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+          <ScalarProperty Name="ArtistImage" ColumnName="ArtistImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="msCarts">
+      <EntityTypeMapping TypeName="localDBModel.msCart">
+        <MappingFragment StoreEntitySet="msCart">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="msCustomers">
+      <EntityTypeMapping TypeName="localDBModel.msCustomer">
+        <MappingFragment StoreEntitySet="msCustomer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+          <ScalarProperty Name="CustomerPassword" ColumnName="CustomerPassword" />
+          <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+          <ScalarProperty Name="CustomerRole" ColumnName="CustomerRole" />
+          <ScalarProperty Name="CustomerGender" ColumnName="CustomerGender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="msTransactionDetails">
+      <EntityTypeMapping TypeName="localDBModel.msTransactionDetail">
+        <MappingFragment StoreEntitySet="msTransactionDetail">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="msTransactionHeaders">
+      <EntityTypeMapping TypeName="localDBModel.msTransactionHeader">
+        <MappingFragment StoreEntitySet="msTransactionHeader">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

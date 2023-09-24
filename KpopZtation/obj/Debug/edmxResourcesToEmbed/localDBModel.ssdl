@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="localDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="msAlbum">
+    <Key>
+      <PropertyRef Name="AlbumID" />
+    </Key>
+    <Property Name="AlbumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtistID" Type="int" Nullable="false" />
+    <Property Name="AlbumName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AlbumImage" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AlbumPrice" Type="int" Nullable="false" />
+    <Property Name="AlbumStock" Type="int" Nullable="false" />
+    <Property Name="AlbumDescription" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="msArtist">
+    <Key>
+      <PropertyRef Name="ArtistID" />
+    </Key>
+    <Property Name="ArtistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArtistName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArtistImage" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="msCart">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="AlbumID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="AlbumID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="msCustomer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerPassword" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerAddress" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CustomerRole" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CustomerGender" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="msTransactionDetail">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+      <PropertyRef Name="AlbumID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" Nullable="false" />
+    <Property Name="AlbumID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="msTransactionHeader">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionDate" Type="date" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__msAlbum__ArtistI__75A278F5">
+    <End Role="msArtist" Type="Self.msArtist" Multiplicity="1" />
+    <End Role="msAlbum" Type="Self.msAlbum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="msArtist">
+        <PropertyRef Name="ArtistID" />
+      </Principal>
+      <Dependent Role="msAlbum">
+        <PropertyRef Name="ArtistID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__msCart__AlbumID__2739D489">
+    <End Role="msAlbum" Type="Self.msAlbum" Multiplicity="1" />
+    <End Role="msCart" Type="Self.msCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="msAlbum">
+        <PropertyRef Name="AlbumID" />
+      </Principal>
+      <Dependent Role="msCart">
+        <PropertyRef Name="AlbumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__msCart__Customer__282DF8C2">
+    <End Role="msCustomer" Type="Self.msCustomer" Multiplicity="1" />
+    <End Role="msCart" Type="Self.msCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="msCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="msCart">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__msTransac__Album__797309D9">
+    <End Role="msAlbum" Type="Self.msAlbum" Multiplicity="1" />
+    <End Role="msTransactionDetail" Type="Self.msTransactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="msAlbum">
+        <PropertyRef Name="AlbumID" />
+      </Principal>
+      <Dependent Role="msTransactionDetail">
+        <PropertyRef Name="AlbumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__msTransac__Custo__70DDC3D8">
+    <End Role="msCustomer" Type="Self.msCustomer" Multiplicity="1" />
+    <End Role="msTransactionHeader" Type="Self.msTransactionHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="msCustomer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="msTransactionHeader">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__msTransac__Trans__787EE5A0">
+    <End Role="msTransactionHeader" Type="Self.msTransactionHeader" Multiplicity="1" />
+    <End Role="msTransactionDetail" Type="Self.msTransactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="msTransactionHeader">
+        <PropertyRef Name="TransactionID" />
+      </Principal>
+      <Dependent Role="msTransactionDetail">
+        <PropertyRef Name="TransactionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="localDBModelStoreContainer">
+    <EntitySet Name="msAlbum" EntityType="Self.msAlbum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="msArtist" EntityType="Self.msArtist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="msCart" EntityType="Self.msCart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="msCustomer" EntityType="Self.msCustomer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="msTransactionDetail" EntityType="Self.msTransactionDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="msTransactionHeader" EntityType="Self.msTransactionHeader" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__msAlbum__ArtistI__75A278F5" Association="Self.FK__msAlbum__ArtistI__75A278F5">
+      <End Role="msArtist" EntitySet="msArtist" />
+      <End Role="msAlbum" EntitySet="msAlbum" />
+    </AssociationSet>
+    <AssociationSet Name="FK__msCart__AlbumID__2739D489" Association="Self.FK__msCart__AlbumID__2739D489">
+      <End Role="msAlbum" EntitySet="msAlbum" />
+      <End Role="msCart" EntitySet="msCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__msCart__Customer__282DF8C2" Association="Self.FK__msCart__Customer__282DF8C2">
+      <End Role="msCustomer" EntitySet="msCustomer" />
+      <End Role="msCart" EntitySet="msCart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__msTransac__Album__797309D9" Association="Self.FK__msTransac__Album__797309D9">
+      <End Role="msAlbum" EntitySet="msAlbum" />
+      <End Role="msTransactionDetail" EntitySet="msTransactionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__msTransac__Custo__70DDC3D8" Association="Self.FK__msTransac__Custo__70DDC3D8">
+      <End Role="msCustomer" EntitySet="msCustomer" />
+      <End Role="msTransactionHeader" EntitySet="msTransactionHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK__msTransac__Trans__787EE5A0" Association="Self.FK__msTransac__Trans__787EE5A0">
+      <End Role="msTransactionHeader" EntitySet="msTransactionHeader" />
+      <End Role="msTransactionDetail" EntitySet="msTransactionDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

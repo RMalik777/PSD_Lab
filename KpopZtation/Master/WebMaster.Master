@@ -1,0 +1,48 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WebMaster.master.cs" Inherits="KpopZtation.Master.WebMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>KpopZtation</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div style="margin-bottom:20px">
+            <%if (role == "Admin")
+            {
+                %>
+            <asp:Button ID="homeBtn" runat="server" Text="Home" OnClick="homeBtn_Click" />
+            <asp:Button ID="transBtn" runat="server" Text="Transaction" OnClick="transBtn_Click" />
+            <asp:Button ID="updtBtn" runat="server" Text="Update Profile" OnClick="updtBtn_Click"/>
+            <asp:Button ID="logoutBtn" runat="server" Text="Logout" OnClick="logoutBtn_Click"/>
+            
+            <%} %>
+            <%else if (role == "Customer")
+            {
+                %>
+            <asp:Button ID="homeBtnc" runat="server" Text="Home" OnClick="homeBtn_Click" />
+            <asp:Button ID="cartBtnc" runat="server" Text="Cart" OnClick="cartBtn_Click" />
+            <asp:Button ID="transBtnc" runat="server" Text="Transaction" OnClick="transBtn_Click"/>
+            <asp:Button ID="updtBtnc" runat="server" Text="Update Profile" OnClick="updtBtn_Click"/>
+            <asp:Button ID="logoutBtnc" runat="server" Text="Logout" OnClick="logoutBtn_Click"/>
+
+            
+            <%} %>
+            <%else
+            {
+                %>
+            <asp:Button ID="homeBtng" runat="server" Text="Home" OnClick="homeBtn_Click" />
+            <asp:Button ID="loginBtn" runat="server" Text="Login"  OnClick="loginBtn_Click"/>
+            <asp:Button ID="regisBtn" runat="server" Text="Register" OnClick="regisBtn_Click" />
+            <%} %>
+        </div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
